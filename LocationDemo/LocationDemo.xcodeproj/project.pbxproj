@@ -18,6 +18,7 @@
 		AB231AE01710F3230052A122 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB231ADF1710F3230052A122 /* Default-568h@2x.png */; };
 		AB231AE31710F3230052A122 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB231AE11710F3230052A122 /* MainStoryboard.storyboard */; };
 		AB231AE61710F3230052A122 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB231AE51710F3230052A122 /* LocationViewController.m */; };
+		AB231AED1710F80C0052A122 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB231AEC1710F80C0052A122 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		AB231AE21710F3230052A122 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		AB231AE41710F3230052A122 /* LocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		AB231AE51710F3230052A122 /* LocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		AB231AEC1710F80C0052A122 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB231AED1710F80C0052A122 /* CoreLocation.framework in Frameworks */,
 				AB231ACA1710F3230052A122 /* UIKit.framework in Frameworks */,
 				AB231ACC1710F3230052A122 /* Foundation.framework in Frameworks */,
 				AB231ACE1710F3230052A122 /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +59,7 @@
 		AB231ABD1710F3220052A122 = {
 			isa = PBXGroup;
 			children = (
+				AB231AEC1710F80C0052A122 /* CoreLocation.framework */,
 				AB231ACF1710F3230052A122 /* LocationDemo */,
 				AB231AC81710F3220052A122 /* Frameworks */,
 				AB231AC71710F3220052A122 /* Products */,
