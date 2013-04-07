@@ -13,17 +13,10 @@
 @end
 
 @implementation SpaceTimeViewController
-
-- (void)viewDidLoad
+- (IBAction)checkInPressed:(UIButton *)sender
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSLog(@"Check in pressed: %@", [sender currentTitle]);
+    [sender setTitle:@"Check out" forState:UIControlStateNormal];
 }
 
 @end
