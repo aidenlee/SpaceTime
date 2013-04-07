@@ -7,11 +7,80 @@
 //
 
 #import "LocationAppDelegate.h"
+#import "LocationTableViewController.h"
 
 @implementation LocationAppDelegate
 
+@synthesize managedObjectModel,managedObjectContext,persistentStoreCoordinator;
+
+// core data stuff
+- (NSManagedObjectContext *) managedObjectContext {
+    if (managedObjectContext != nil) {
+        return managedObjectContext;
+    }
+    
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    
+    if (coordinator != nil) {
+        managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [managedObjectContext setPersistentStoreCoordinator: coordinator];
+    }
+    return managedObjectContext;
+}
+
+- (NSManagedObjectModel *)managedObjectModel
+
+{
+    if (managedObjectModel != nil) {
+        return managedObjectModel;
+    }
+    else
+    {
+        managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+        return managedObjectModel;
+    }
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    if (persistentStoreCoordinator != nil) {
+        return persistentStoreCoordinator;
+    }
+    
+    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Model.sqlite"]];
+    
+    NSError *error = nil;
+    
+    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    
+    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
+        
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        
+        abort();
+    }
+    
+    return persistentStoreCoordinator;
+}
+
+- (NSString *)applicationDocumentsDirectory {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
+// application stuff
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    LocationTableViewController* locationTableViewController = [[LocationTableViewController alloc] initWithStyle:UITableViewStylePlain] ;
+    
+    NSManagedObjectContext* context = [self managedObjectContext] ;
+    
+    if (!context) {
+        UIAlertView* errorAlert = [[UIAlertView alloc] initWithTitle:@"No Context" message:@"You failed." delegate:nil cancelButtonTitle:@"Oops." otherButtonTitles: nil] ;
+        [errorAlert show] ;
+    }
+    
+    locationTableViewController.managedObjectContext = context ;
+    [_window makeKeyAndVisible] ;    
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -41,6 +110,19 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    NSError *error = nil;
+    
+    if (managedObjectContext != nil) {
+        
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+            
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            
+            abort();
+            
+        }
+        
+    }
 }
 
 @end

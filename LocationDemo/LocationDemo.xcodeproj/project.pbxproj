@@ -20,6 +20,9 @@
 		AB231AE61710F3230052A122 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB231AE51710F3230052A122 /* LocationViewController.m */; };
 		AB231AED1710F80C0052A122 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB231AEC1710F80C0052A122 /* CoreLocation.framework */; };
 		AB9A821A1711E511001AEB47 /* LocationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9A82191711E511001AEB47 /* LocationTableViewController.m */; };
+		AB9A821C171205C7001AEB47 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9A821B171205C7001AEB47 /* CoreData.framework */; };
+		AB9A821F171224A7001AEB47 /* Locations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB9A821D171224A7001AEB47 /* Locations.xcdatamodeld */; };
+		AB9A8222171225B7001AEB47 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9A8221171225B7001AEB47 /* Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,10 @@
 		AB231AEC1710F80C0052A122 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AB9A82181711E511001AEB47 /* LocationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTableViewController.h; sourceTree = "<group>"; };
 		AB9A82191711E511001AEB47 /* LocationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableViewController.m; sourceTree = "<group>"; };
+		AB9A821B171205C7001AEB47 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		AB9A821E171224A7001AEB47 /* Locations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Locations.xcdatamodel; sourceTree = "<group>"; };
+		AB9A8220171225B7001AEB47 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		AB9A8221171225B7001AEB47 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB9A821C171205C7001AEB47 /* CoreData.framework in Frameworks */,
 				AB231AED1710F80C0052A122 /* CoreLocation.framework in Frameworks */,
 				AB231ACA1710F3230052A122 /* UIKit.framework in Frameworks */,
 				AB231ACC1710F3230052A122 /* Foundation.framework in Frameworks */,
@@ -62,6 +70,10 @@
 		AB231ABD1710F3220052A122 = {
 			isa = PBXGroup;
 			children = (
+				AB9A8220171225B7001AEB47 /* Event.h */,
+				AB9A8221171225B7001AEB47 /* Event.m */,
+				AB9A821D171224A7001AEB47 /* Locations.xcdatamodeld */,
+				AB9A821B171205C7001AEB47 /* CoreData.framework */,
 				AB231AEC1710F80C0052A122 /* CoreLocation.framework */,
 				AB231ACF1710F3230052A122 /* LocationDemo */,
 				AB231AC81710F3220052A122 /* Frameworks */,
@@ -187,6 +199,8 @@
 				AB231ADA1710F3230052A122 /* LocationAppDelegate.m in Sources */,
 				AB231AE61710F3230052A122 /* LocationViewController.m in Sources */,
 				AB9A821A1711E511001AEB47 /* LocationTableViewController.m in Sources */,
+				AB9A821F171224A7001AEB47 /* Locations.xcdatamodeld in Sources */,
+				AB9A8222171225B7001AEB47 /* Event.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +326,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AB9A821D171224A7001AEB47 /* Locations.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AB9A821E171224A7001AEB47 /* Locations.xcdatamodel */,
+			);
+			currentVersion = AB9A821E171224A7001AEB47 /* Locations.xcdatamodel */;
+			path = Locations.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AB231ABE1710F3220052A122 /* Project object */;
 }
