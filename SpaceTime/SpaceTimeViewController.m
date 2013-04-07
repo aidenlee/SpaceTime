@@ -15,8 +15,15 @@
 @implementation SpaceTimeViewController
 - (IBAction)checkInPressed:(UIButton *)sender
 {
-    NSLog(@"Check in pressed: %@", [sender currentTitle]);
-    [sender setTitle:@"Check out" forState:UIControlStateNormal];
+    if ([sender.currentTitle isEqualToString:@"Check In"]) {
+        NSLog(@"Check in pressed: %@", sender.currentTitle);
+        [sender setTitle:@"Check Out" forState:UIControlStateNormal];
+    } else if ([sender.currentTitle isEqualToString:@"Check Out"]) {
+        NSLog(@"Check out pressed: %@", sender.currentTitle);
+        [sender setTitle:@"Check In" forState:UIControlStateNormal];
+    }
+
+    
 }
 
 @end
