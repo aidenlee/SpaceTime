@@ -19,6 +19,7 @@
 		AB231AE31710F3230052A122 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB231AE11710F3230052A122 /* MainStoryboard.storyboard */; };
 		AB231AE61710F3230052A122 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB231AE51710F3230052A122 /* LocationViewController.m */; };
 		AB231AED1710F80C0052A122 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB231AEC1710F80C0052A122 /* CoreLocation.framework */; };
+		AB9A821A1711E511001AEB47 /* LocationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9A82191711E511001AEB47 /* LocationTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		AB231AE41710F3230052A122 /* LocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		AB231AE51710F3230052A122 /* LocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		AB231AEC1710F80C0052A122 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AB9A82181711E511001AEB47 /* LocationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTableViewController.h; sourceTree = "<group>"; };
+		AB9A82191711E511001AEB47 /* LocationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				AB231AE41710F3230052A122 /* LocationViewController.h */,
 				AB231AE51710F3230052A122 /* LocationViewController.m */,
 				AB231AD01710F3230052A122 /* Supporting Files */,
+				AB9A82181711E511001AEB47 /* LocationTableViewController.h */,
+				AB9A82191711E511001AEB47 /* LocationTableViewController.m */,
 			);
 			path = LocationDemo;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				AB231AD61710F3230052A122 /* main.m in Sources */,
 				AB231ADA1710F3230052A122 /* LocationAppDelegate.m in Sources */,
 				AB231AE61710F3230052A122 /* LocationViewController.m in Sources */,
+				AB9A821A1711E511001AEB47 /* LocationTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +309,7 @@
 				AB231AEB1710F3230052A122 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

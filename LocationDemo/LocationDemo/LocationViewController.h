@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface LocationViewController : UIViewController <CLLocationManagerDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *coordsLabel;
 - (IBAction)getLocation:(id)sender;
 
