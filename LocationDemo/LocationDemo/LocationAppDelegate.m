@@ -12,6 +12,7 @@
 @implementation LocationAppDelegate
 
 @synthesize managedObjectModel,managedObjectContext,persistentStoreCoordinator;
+@synthesize navigationController;
 
 // core data stuff
 - (NSManagedObjectContext *) managedObjectContext {
@@ -78,6 +79,12 @@
         [errorAlert show] ;
     }
     
+    UINavigationController *aNavigationController = [[UINavigationController alloc]
+                                                     initWithRootViewController:locationTableViewController];
+    self.navigationController = aNavigationController;
+    
+    [_window addSubview:[navigationController view]];
+
     [_window makeKeyAndVisible] ;
     
     // Override point for customization after application launch.

@@ -17,6 +17,7 @@
 @synthesize managedObjectContext ;
 @synthesize locationManager ;
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -57,6 +58,11 @@
     self.title = @"Locations" ;
     [[self locationManager] startUpdatingLocation] ;
     eventsArray = [[NSMutableArray alloc] init];
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:nil
+                                                            action:nil];
+    [[self navigationItem] setBackBarButtonItem:back];
 }
 
 - (void)didReceiveMemoryWarning
