@@ -7,12 +7,13 @@
 //
 
 #import "LocationAppDelegate.h"
+#import "LocationViewController.h"
 #import "LocationTableViewController.h"
 
 @implementation LocationAppDelegate
 
 @synthesize managedObjectModel,managedObjectContext,persistentStoreCoordinator;
-@synthesize navigationController;
+//@synthesize navigationController;
 
 // core data stuff
 - (NSManagedObjectContext *) managedObjectContext {
@@ -79,18 +80,23 @@
         [errorAlert show] ;
     }
     
-    UINavigationController *aNavigationController = [[UINavigationController alloc]
-                                                     initWithRootViewController:locationTableViewController];
-    self.navigationController = aNavigationController;
-    
-    [_window addSubview:[navigationController view]];
-
     [_window makeKeyAndVisible] ;
     
     // Override point for customization after application launch.
     return YES;
 }
-							
+
+//- (void)navigationBar {
+//    LocationTableViewController* locationTableViewController = [[LocationTableViewController alloc] initWithStyle:UITableViewStylePlain] ;
+//
+//    UINavigationController *aNavigationController = [[UINavigationController alloc]
+//                                                     initWithRootViewController:locationTableViewController];
+//    self.navigationController = aNavigationController;
+//    
+//    [_window addSubview:[navigationController view]];
+//
+//}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

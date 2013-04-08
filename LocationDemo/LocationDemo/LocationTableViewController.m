@@ -7,6 +7,7 @@
 //
 
 #import "LocationTableViewController.h"
+#import "LocationAppDelegate.h"
 
 @interface LocationTableViewController ()
 
@@ -56,13 +57,18 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.title = @"Locations" ;
-    [[self locationManager] startUpdatingLocation] ;
     eventsArray = [[NSMutableArray alloc] init];
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"Back"
-                                                             style:UIBarButtonItemStylePlain
-                                                            target:nil
-                                                            action:nil];
-    [[self navigationItem] setBackBarButtonItem:back];
+    
+//    LocationAppDelegate* appDelegate = [LocationAppDelegate sharedAppDelegate];
+//    [appDelegate navigationBar] ;
+//    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+//                                                             style:UIBarButtonItemStylePlain
+//                                                            target:nil
+//                                                            action:nil];
+//    [[self navigationItem] setBackBarButtonItem:back];
+
+    [[self locationManager] startUpdatingLocation] ;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -186,10 +192,10 @@
         return;
     }
     
-//    if (!managedObjectContext) {
-//        UIAlertView* errorAlert = [[UIAlertView alloc] initWithTitle:@"No Context" message:@"You failed." delegate:nil cancelButtonTitle:@"Oops." otherButtonTitles: nil] ;
-//        [errorAlert show] ;
-//    }
+    if (!managedObjectContext) {
+        UIAlertView* errorAlert = [[UIAlertView alloc] initWithTitle:@"No Context" message:@"You failed." delegate:nil cancelButtonTitle:@"Oops." otherButtonTitles: nil] ;
+        [errorAlert show] ;
+    }
     
     // create entity
     Event* event = (Event*)[NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:managedObjectContext] ;
