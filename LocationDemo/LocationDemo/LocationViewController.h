@@ -13,5 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *coordsLabel;
 - (IBAction)getLocation:(id)sender;
+@property (nonatomic,retain) NSManagedObjectContext* managedObjectContext ;
 
 @end

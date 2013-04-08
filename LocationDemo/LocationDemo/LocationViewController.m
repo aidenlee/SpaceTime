@@ -7,6 +7,8 @@
 //
 
 #import "LocationViewController.h"
+#import "LocationTableViewController.h"
+#import "LocationAppDelegate.h"
 
 @interface LocationViewController ()
 
@@ -16,7 +18,17 @@
     CLLocationManager* locationManager ;
 }
 
+@synthesize managedObjectContext ;
 @synthesize coordsLabel ;
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"toRecord"]) {
+        LocationAppDelegate* appDelegate = [LocationAppDelegate sharedAppDelegate];
+        managedObjectContext = appDelegate.managedObjectContext;
+        LocationTableViewController* newcontroller = [segue destinationViewController];
+        newcontroller.managedObjectContext = managedObjectContext;
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -50,6 +62,8 @@
     
     if (currentLocation != Nil) {
         coordsLabel.text = [NSString stringWithFormat:@"(%.2f,%.2f)",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude] ;
+        
     }
 }
+
 @end

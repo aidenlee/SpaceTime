@@ -78,8 +78,7 @@
         [errorAlert show] ;
     }
     
-    locationTableViewController.managedObjectContext = context ;
-    [_window makeKeyAndVisible] ;    
+    [_window makeKeyAndVisible] ;
     
     // Override point for customization after application launch.
     return YES;
@@ -124,5 +123,11 @@
         
     }
 }
+
++ (LocationAppDelegate *)sharedAppDelegate
+{
+    return (LocationAppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
 
 @end

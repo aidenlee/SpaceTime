@@ -8,13 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LocationAppDelegate : UIResponder <UIApplicationDelegate>
+@interface LocationAppDelegate : UIResponder <UIApplicationDelegate> {
+    NSManagedObjectContext* managedObjectContext ;
+}
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (NSString *)applicationDocumentsDirectory;
+
++ (LocationAppDelegate*)sharedAppDelegate;
+
 
 @end

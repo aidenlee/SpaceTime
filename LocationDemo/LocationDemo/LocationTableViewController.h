@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <CoreData/CoreData.h>
+#import "Event.h"
 
 @interface LocationTableViewController : UITableViewController <CLLocationManagerDelegate> {
     
@@ -21,5 +22,7 @@
 @property (nonatomic,retain) NSMutableArray* eventsArray ;
 @property (nonatomic,retain) NSManagedObjectContext* managedObjectContext ;
 @property (nonatomic,retain) CLLocationManager* locationManager ;
+
+- (void)AddEvent ;
 
 @end

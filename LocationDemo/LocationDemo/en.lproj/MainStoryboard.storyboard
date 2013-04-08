@@ -49,7 +49,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="eat-p5-46M" kind="modal" id="k6h-m4-ZGL"/>
+                                    <segue destination="eat-p5-46M" kind="modal" identifier="toRecord" id="k6h-m4-ZGL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -95,24 +95,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edI-11-7Uk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604" y="58"/>
+            <point key="canvasLocation" x="859" y="32"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="LocationTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationTableViewController.h"/>
-        </class>
-        <class className="LocationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="getLocation:"/>
-                <relationship kind="outlet" name="coordsLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

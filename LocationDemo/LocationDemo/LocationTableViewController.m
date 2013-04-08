@@ -38,10 +38,6 @@
     return locationManager ;
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    
-}
-
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"Failed with: %@", error) ;
     UIAlertView* errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not get location!" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil] ;
@@ -60,6 +56,7 @@
     
     self.title = @"Locations" ;
     [[self locationManager] startUpdatingLocation] ;
+    eventsArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,22 +71,51 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [eventsArray count] ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    // date formatter for time
+    static NSDateFormatter* dateFormatter = nil;
+    if (dateFormatter == nil) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setTimeStyle:NSDateFormatterMediumStyle] ;
+        [dateFormatter setTimeStyle:NSDateFormatterMediumStyle] ;
+    }
     
-    // Configure the cell...
+    // number formatter for long/lat
+    static NSNumberFormatter* numberFormatter = nil;
+    if (numberFormatter == nil) {
+        numberFormatter = [[NSNumberFormatter alloc] init] ;
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle] ;
+        [numberFormatter setMaximumFractionDigits:3] ;
+    }
+    
+    static NSString* CellIdentifier =@"Cell" ;
+    
+    // dequeue or create a new cell
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier] ;
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    Event* event = (Event*)[eventsArray objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [dateFormatter stringFromDate:[event locationTime]] ;
+    
+    NSString* coordsString =[NSString stringWithFormat:@"%@, %@",
+                             [numberFormatter stringFromNumber:[event latitude]],
+                             [numberFormatter stringFromNumber:[event longitude]]
+                            ];
+    
+    cell.detailTextLabel.text = coordsString ;
     
     return cell;
 }
@@ -146,4 +172,50 @@
      */
 }
 
+// addEvent stuff
+- (void)addEvent {
+    
+    CLLocation* location = [locationManager location] ;
+    if (!location) {
+        return;
+    }
+    
+//    if (!managedObjectContext) {
+//        UIAlertView* errorAlert = [[UIAlertView alloc] initWithTitle:@"No Context" message:@"You failed." delegate:nil cancelButtonTitle:@"Oops." otherButtonTitles: nil] ;
+//        [errorAlert show] ;
+//    }
+    
+    // create entity
+    Event* event = (Event*)[NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:managedObjectContext] ;
+    
+    CLLocationCoordinate2D coordinate = [location coordinate] ;
+    [event setLatitude:[NSNumber numberWithDouble:coordinate.latitude]];
+    [event setLongitude:[NSNumber numberWithDouble:coordinate.longitude]];
+    [event setLocationTime:[NSDate date]];
+    
+    NSError* error = nil;
+    
+    // save entity
+    if (![managedObjectContext save:&error]) {
+        UIAlertView* errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not add location!" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil] ;
+        [errorAlert show] ;
+    }
+    
+    /* insert event in eventarray
+       add a row to the top of the table
+       scroll to the top row */
+    [eventsArray insertObject:event atIndex:0] ;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0] ;
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade] ;
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES] ;
+}
+                             
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+     NSLog(@"didUpdateToLocation: %@", newLocation) ;
+     CLLocation* currentLocation = newLocation ;
+    
+     if (currentLocation != nil) {
+         [self addEvent];
+     }
+}
 @end
