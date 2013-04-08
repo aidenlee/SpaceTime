@@ -121,14 +121,19 @@
     
     Event* event = (Event*)[eventsArray objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [dateFormatter stringFromDate:[event locationTime]] ;
-    
-    NSString* coordsString =[NSString stringWithFormat:@"%@, %@",
-                             [numberFormatter stringFromNumber:[event latitude]],
-                             [numberFormatter stringFromNumber:[event longitude]]
-                            ];
-    
-    cell.detailTextLabel.text = coordsString ;
+    if ([event.stationary intValue] == 1) {
+        cell.textLabel.text = @"Currently stationary.";
+    }
+    else {
+        cell.textLabel.text = [dateFormatter stringFromDate:[event locationTime]] ;
+        
+        NSString* coordsString =[NSString stringWithFormat:@"%@, %@",
+                                 [numberFormatter stringFromNumber:[event latitude]],
+                                 [numberFormatter stringFromNumber:[event longitude]]
+                                ];
+        
+        cell.detailTextLabel.text = coordsString ;
+    }
     
     return cell;
 }
@@ -186,7 +191,7 @@
 }
 
 // addEvent stuff
-- (void)addEvent {
+- (void)addEventOfType:(NSNumber*)type {
     
     CLLocation* location = [locationManager location] ;
     if (!location) {
@@ -205,6 +210,7 @@
     [event setLatitude:[NSNumber numberWithDouble:coordinate.latitude]];
     [event setLongitude:[NSNumber numberWithDouble:coordinate.longitude]];
     [event setLocationTime:[NSDate date]];
+    [event setStationary:type];
     
     NSError* error = nil;
     
@@ -228,23 +234,29 @@
      CLLocation* currentLocation = newLocation ;
     
     CLLocationDistance movement = [newLocation distanceFromLocation:oldLocation];
-    
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setFetchLimit:1];
-    
-    // Results should be in descending order of timeStamp.
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timeStamp" ascending:NO];
-    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    
-    NSArray *results = [managedObjectContext executeFetchRequest:request error:NULL];
-    Event *latestEvent = [results objectAtIndex:0];
-    
-    if (movement > 20 && currentLocation != nil) {
-        [self addEvent];
+
+    // always start with a stationary event
+    if ((int)[eventsArray count] == 0) {
+            [self addEventOfType:[NSNumber numberWithInt:1]];
     }
-    
-    else {
+    else {        
+        Event *latestEvent = [eventsArray objectAtIndex:0];
         
+        // only add event if moving 
+        if ([latestEvent.stationary intValue] == 1) {
+            if (movement > 5 && currentLocation != nil) {
+                [self addEventOfType:[NSNumber numberWithInt:0]];
+            }
+        }
+        else {
+            if (movement > 5 && currentLocation != nil) {
+                [self addEventOfType:[NSNumber numberWithInt:0]];
+            }
+            
+            else {
+                [self addEventOfType:[NSNumber numberWithInt:1]];
+            }
+        }
     }
 }
 @end
