@@ -10,4 +10,6 @@
 
 @interface SpaceTimeViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *checkInOutButton;
+
 @end

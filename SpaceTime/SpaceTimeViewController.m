@@ -13,17 +13,24 @@
 @end
 
 @implementation SpaceTimeViewController
+
+@synthesize checkInOutButton = _checkInOutButton;
+
 - (IBAction)checkInPressed:(UIButton *)sender
 {
+    NSDate *today = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle: NSDateFormatterShortStyle];
+    NSString *currentTime = [dateFormatter stringFromDate:today];
+    
     if ([sender.currentTitle isEqualToString:@"Check In"]) {
-        NSLog(@"Check in pressed: %@", sender.currentTitle);
+        NSLog(@"Check in pressed: %@ at: %@", sender.currentTitle, currentTime);
         [sender setTitle:@"Check Out" forState:UIControlStateNormal];
     } else if ([sender.currentTitle isEqualToString:@"Check Out"]) {
-        NSLog(@"Check out pressed: %@", sender.currentTitle);
+        NSLog(@"Check out pressed: %@ at: %@", sender.currentTitle, currentTime);
         [sender setTitle:@"Check In" forState:UIControlStateNormal];
-    }
-
-    
+    }    
 }
 
 @end
+    

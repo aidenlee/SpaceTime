@@ -32,9 +32,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zsv-lM-EsQ" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="561-gU-EW2"/>
-                            <constraint firstItem="zsv-lM-EsQ" firstAttribute="top" secondItem="3" secondAttribute="top" constant="91" id="AMd-Hz-OeD"/>
+                            <constraint firstItem="zsv-lM-EsQ" firstAttribute="top" secondItem="3" secondAttribute="top" constant="91" id="msx-BH-m9I"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="checkInOutButton" destination="zsv-lM-EsQ" id="hUi-ud-Q9c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
@@ -48,6 +51,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SpaceTimeViewController.h"/>
             <relationships>
                 <relationship kind="action" name="checkInPressed:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkInOutButton" candidateClass="UIButton"/>
             </relationships>
         </class>
     </classes>
