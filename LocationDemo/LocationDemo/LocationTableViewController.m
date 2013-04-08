@@ -7,6 +7,7 @@
 //
 
 #import "LocationTableViewController.h"
+#import "LocationAppDelegate.h"
 
 @interface LocationTableViewController ()
 
@@ -16,6 +17,7 @@
 @synthesize eventsArray ;
 @synthesize managedObjectContext ;
 @synthesize locationManager ;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,6 +35,7 @@
 
     locationManager =[[CLLocationManager alloc] init] ;
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters ;
+    [locationManager setDistanceFilter:15];
     locationManager.delegate = self ;
 
     return locationManager ;
@@ -55,8 +58,18 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.title = @"Locations" ;
-    [[self locationManager] startUpdatingLocation] ;
     eventsArray = [[NSMutableArray alloc] init];
+    
+//    LocationAppDelegate* appDelegate = [LocationAppDelegate sharedAppDelegate];
+//    [appDelegate navigationBar] ;
+//    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+//                                                             style:UIBarButtonItemStylePlain
+//                                                            target:nil
+//                                                            action:nil];
+//    [[self navigationItem] setBackBarButtonItem:back];
+
+    [[self locationManager] startUpdatingLocation] ;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,14 +121,19 @@
     
     Event* event = (Event*)[eventsArray objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [dateFormatter stringFromDate:[event locationTime]] ;
-    
-    NSString* coordsString =[NSString stringWithFormat:@"%@, %@",
-                             [numberFormatter stringFromNumber:[event latitude]],
-                             [numberFormatter stringFromNumber:[event longitude]]
-                            ];
-    
-    cell.detailTextLabel.text = coordsString ;
+    if ([event.stationary intValue] == 1) {
+        cell.textLabel.text = @"Currently stationary.";
+    }
+    else {
+        cell.textLabel.text = [dateFormatter stringFromDate:[event locationTime]] ;
+        
+        NSString* coordsString =[NSString stringWithFormat:@"%@, %@",
+                                 [numberFormatter stringFromNumber:[event latitude]],
+                                 [numberFormatter stringFromNumber:[event longitude]]
+                                ];
+        
+        cell.detailTextLabel.text = coordsString ;
+    }
     
     return cell;
 }
@@ -173,17 +191,17 @@
 }
 
 // addEvent stuff
-- (void)addEvent {
+- (void)addEventOfType:(NSNumber*)type {
     
     CLLocation* location = [locationManager location] ;
     if (!location) {
         return;
     }
     
-//    if (!managedObjectContext) {
-//        UIAlertView* errorAlert = [[UIAlertView alloc] initWithTitle:@"No Context" message:@"You failed." delegate:nil cancelButtonTitle:@"Oops." otherButtonTitles: nil] ;
-//        [errorAlert show] ;
-//    }
+    if (!managedObjectContext) {
+        UIAlertView* errorAlert = [[UIAlertView alloc] initWithTitle:@"No Context" message:@"You failed." delegate:nil cancelButtonTitle:@"Oops." otherButtonTitles: nil] ;
+        [errorAlert show] ;
+    }
     
     // create entity
     Event* event = (Event*)[NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:managedObjectContext] ;
@@ -192,6 +210,7 @@
     [event setLatitude:[NSNumber numberWithDouble:coordinate.latitude]];
     [event setLongitude:[NSNumber numberWithDouble:coordinate.longitude]];
     [event setLocationTime:[NSDate date]];
+    [event setStationary:type];
     
     NSError* error = nil;
     
@@ -214,8 +233,30 @@
      NSLog(@"didUpdateToLocation: %@", newLocation) ;
      CLLocation* currentLocation = newLocation ;
     
-     if (currentLocation != nil) {
-         [self addEvent];
-     }
+    CLLocationDistance movement = [newLocation distanceFromLocation:oldLocation];
+
+    // always start with a stationary event
+    if ((int)[eventsArray count] == 0) {
+            [self addEventOfType:[NSNumber numberWithInt:1]];
+    }
+    else {        
+        Event *latestEvent = [eventsArray objectAtIndex:0];
+        
+        // only add event if moving 
+        if ([latestEvent.stationary intValue] == 1) {
+            if (movement > 5 && currentLocation != nil) {
+                [self addEventOfType:[NSNumber numberWithInt:0]];
+            }
+        }
+        else {
+            if (movement > 5 && currentLocation != nil) {
+                [self addEventOfType:[NSNumber numberWithInt:0]];
+            }
+            
+            else {
+                [self addEventOfType:[NSNumber numberWithInt:1]];
+            }
+        }
+    }
 }
 @end

@@ -22,6 +22,7 @@
 @property (nonatomic,retain) NSMutableArray* eventsArray ;
 @property (nonatomic,retain) NSManagedObjectContext* managedObjectContext ;
 @property (nonatomic,retain) CLLocationManager* locationManager ;
+@property (nonatomic, retain) UINavigationController *navigationController;
 
 - (void)AddEvent ;
 

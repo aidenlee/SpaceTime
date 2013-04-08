@@ -22,7 +22,7 @@
 		AB9A821A1711E511001AEB47 /* LocationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9A82191711E511001AEB47 /* LocationTableViewController.m */; };
 		AB9A821C171205C7001AEB47 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9A821B171205C7001AEB47 /* CoreData.framework */; };
 		AB9A821F171224A7001AEB47 /* Locations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB9A821D171224A7001AEB47 /* Locations.xcdatamodeld */; };
-		AB9A8222171225B7001AEB47 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9A8221171225B7001AEB47 /* Event.m */; };
+		ABF479EF1712988700D7A8DD /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF479EE1712988700D7A8DD /* Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,8 +47,8 @@
 		AB9A82191711E511001AEB47 /* LocationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableViewController.m; sourceTree = "<group>"; };
 		AB9A821B171205C7001AEB47 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AB9A821E171224A7001AEB47 /* Locations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Locations.xcdatamodel; sourceTree = "<group>"; };
-		AB9A8220171225B7001AEB47 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		AB9A8221171225B7001AEB47 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		ABF479ED1712988700D7A8DD /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		ABF479EE1712988700D7A8DD /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +70,8 @@
 		AB231ABD1710F3220052A122 = {
 			isa = PBXGroup;
 			children = (
-				AB9A8220171225B7001AEB47 /* Event.h */,
-				AB9A8221171225B7001AEB47 /* Event.m */,
+				ABF479ED1712988700D7A8DD /* Event.h */,
+				ABF479EE1712988700D7A8DD /* Event.m */,
 				AB9A821D171224A7001AEB47 /* Locations.xcdatamodeld */,
 				AB9A821B171205C7001AEB47 /* CoreData.framework */,
 				AB231AEC1710F80C0052A122 /* CoreLocation.framework */,
@@ -200,7 +200,7 @@
 				AB231AE61710F3230052A122 /* LocationViewController.m in Sources */,
 				AB9A821A1711E511001AEB47 /* LocationTableViewController.m in Sources */,
 				AB9A821F171224A7001AEB47 /* Locations.xcdatamodeld in Sources */,
-				AB9A8222171225B7001AEB47 /* Event.m in Sources */,
+				ABF479EF1712988700D7A8DD /* Event.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

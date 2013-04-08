@@ -4,8 +4,9 @@
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="locationTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="stationary" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="160" positionY="192" width="128" height="88"/>
+        <element name="Event" positionX="-7542" positionY="-2835" width="128" height="103"/>
     </elements>
 </model>
