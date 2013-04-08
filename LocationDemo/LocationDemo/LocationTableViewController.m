@@ -35,6 +35,7 @@
 
     locationManager =[[CLLocationManager alloc] init] ;
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters ;
+    [locationManager setDistanceFilter:15];
     locationManager.delegate = self ;
 
     return locationManager ;
@@ -226,8 +227,24 @@
      NSLog(@"didUpdateToLocation: %@", newLocation) ;
      CLLocation* currentLocation = newLocation ;
     
-     if (currentLocation != nil) {
-         [self addEvent];
-     }
+    CLLocationDistance movement = [newLocation distanceFromLocation:oldLocation];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setFetchLimit:1];
+    
+    // Results should be in descending order of timeStamp.
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timeStamp" ascending:NO];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
+    NSArray *results = [managedObjectContext executeFetchRequest:request error:NULL];
+    Event *latestEvent = [results objectAtIndex:0];
+    
+    if (movement > 20 && currentLocation != nil) {
+        [self addEvent];
+    }
+    
+    else {
+        
+    }
 }
 @end

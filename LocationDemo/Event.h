@@ -15,5 +15,4 @@
 @property (nonatomic, retain) NSDate * locationTime;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
-
 @end
