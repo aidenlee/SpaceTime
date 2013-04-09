@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070660B9171367AE006F8F77 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 070660B7171367AE006F8F77 /* Model.xcdatamodeld */; };
+		070660BB17136882006F8F77 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 070660BA17136882006F8F77 /* CoreData.framework */; };
+		070660C117137BEF006F8F77 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 070660C017137BEF006F8F77 /* Activity.m */; };
+		070660CD17138E32006F8F77 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 070660CC17138E32006F8F77 /* RootViewController.m */; };
 		07B232861710EC8400026114 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B232851710EC8400026114 /* UIKit.framework */; };
 		07B232881710EC8400026114 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B232871710EC8400026114 /* Foundation.framework */; };
 		07B2328A1710EC8400026114 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B232891710EC8400026114 /* CoreGraphics.framework */; };
@@ -37,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		070660B8171367AE006F8F77 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		070660BA17136882006F8F77 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		070660BF17137BEF006F8F77 /* Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Activity.h; sourceTree = "<group>"; };
+		070660C017137BEF006F8F77 /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Activity.m; sourceTree = "<group>"; };
+		070660CB17138E32006F8F77 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		070660CC17138E32006F8F77 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		07B232821710EC8400026114 /* SpaceTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B232851710EC8400026114 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		07B232871710EC8400026114 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -67,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				070660BB17136882006F8F77 /* CoreData.framework in Frameworks */,
 				07B232861710EC8400026114 /* UIKit.framework in Frameworks */,
 				07B232881710EC8400026114 /* Foundation.framework in Frameworks */,
 				07B2328A1710EC8400026114 /* CoreGraphics.framework in Frameworks */,
@@ -89,6 +100,7 @@
 		07B232791710EC8400026114 = {
 			isa = PBXGroup;
 			children = (
+				070660BA17136882006F8F77 /* CoreData.framework */,
 				07B2328B1710EC8400026114 /* SpaceTime */,
 				07B232B21710EC8400026114 /* SpaceTimeTests */,
 				07B232841710EC8400026114 /* Frameworks */,
@@ -119,9 +131,14 @@
 		07B2328B1710EC8400026114 /* SpaceTime */ = {
 			isa = PBXGroup;
 			children = (
+				070660CC17138E32006F8F77 /* RootViewController.m */,
+				070660CB17138E32006F8F77 /* RootViewController.h */,
 				07B232941710EC8400026114 /* SpaceTimeAppDelegate.h */,
 				07B232951710EC8400026114 /* SpaceTimeAppDelegate.m */,
 				07B2329D1710EC8400026114 /* MainStoryboard_iPhone.storyboard */,
+				070660B7171367AE006F8F77 /* Model.xcdatamodeld */,
+				070660BF17137BEF006F8F77 /* Activity.h */,
+				070660C017137BEF006F8F77 /* Activity.m */,
 				07B232A01710EC8400026114 /* MainStoryboard_iPad.storyboard */,
 				07B232A31710EC8400026114 /* SpaceTimeViewController.h */,
 				07B232A41710EC8400026114 /* SpaceTimeViewController.m */,
@@ -278,6 +295,9 @@
 				07B232921710EC8400026114 /* main.m in Sources */,
 				07B232961710EC8400026114 /* SpaceTimeAppDelegate.m in Sources */,
 				07B232A51710EC8400026114 /* SpaceTimeViewController.m in Sources */,
+				070660B9171367AE006F8F77 /* Model.xcdatamodeld in Sources */,
+				070660C117137BEF006F8F77 /* Activity.m in Sources */,
+				070660CD17138E32006F8F77 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +488,7 @@
 				07B232BF1710EC8400026114 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		07B232C01710EC8400026114 /* Build configuration list for PBXNativeTarget "SpaceTimeTests" */ = {
 			isa = XCConfigurationList;
@@ -476,8 +497,22 @@
 				07B232C21710EC8400026114 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		070660B7171367AE006F8F77 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				070660B8171367AE006F8F77 /* Model.xcdatamodel */,
+			);
+			currentVersion = 070660B8171367AE006F8F77 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 07B2327A1710EC8400026114 /* Project object */;
 }

@@ -7,12 +7,30 @@
 //
 
 #import "SpaceTimeAppDelegate.h"
+#import "SpaceTimeViewController.h"
+#import "RootViewController.h"
 
 @implementation SpaceTimeAppDelegate
+
+@synthesize navigationController = _navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    RootViewController *rootViewController = [[RootViewController alloc] initWithStyle:UITableViewStylePlain];
+    NSManagedObjectContext *context = [self managedObjectContext];
+    if (!context) {
+        // Handle the error.
+    }
+    // Pass the managed object context to the view controller.
+    rootViewController.managedObjectContext = context;
+    
+    UINavigationController *aNavigationController = [[UINavigationController alloc]
+                                                     initWithRootViewController:rootViewController];
+    self.navigationController = aNavigationController;
+    
+    // initialize data store
     return YES;
 }
 							

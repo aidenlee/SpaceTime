@@ -7,6 +7,8 @@
 //
 
 #import "SpaceTimeViewController.h"
+#import "Activity.h"
+#import "SpaceTimeAppDelegate.h"
 
 @interface SpaceTimeViewController ()
 
@@ -29,7 +31,19 @@
     } else if ([sender.currentTitle isEqualToString:@"Check Out"]) {
         NSLog(@"Check out pressed: %@ at: %@", sender.currentTitle, currentTime);
         [sender setTitle:@"Check In" forState:UIControlStateNormal];
-    }    
+    }
+    
+    SpaceTimeAppDelegate *ad = (SpaceTimeAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *moc = ad.managedObjectContext;
+    Activity *newActivity = (Activity *)[NSEntityDescription insertNewObjectForEntityForName:@"Activity" inManagedObjectContext:moc];
+    newActivity.checkedIn = currentTime;
+    newActivity.checkedOut = currentTime;
+    NSError *error;
+    if (![moc save:&error]) {
+        NSLog(@"Error saving new Activity: %@", [error localizedDescription]);
+    }
+    [self.activitiesArray addObject:newActivity];
+    // activity.save
 }
 
 @end
