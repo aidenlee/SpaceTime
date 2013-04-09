@@ -17,6 +17,9 @@
 @implementation SpaceTimeViewController
 
 @synthesize checkInOutButton = _checkInOutButton;
+@synthesize activitiesArray = _activitiesArray;
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize addButton = _addButton;
 
 - (IBAction)checkInPressed:(UIButton *)sender
 {

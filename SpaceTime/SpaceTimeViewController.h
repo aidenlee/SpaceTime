@@ -11,6 +11,8 @@
 @interface SpaceTimeViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *checkInOutButton;
-@property (nonatomic) NSMutableArray *activitiesArray;
+@property (nonatomic, retain) NSMutableArray *activitiesArray;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) UIBarButtonItem *addButton;
 
 @end
