@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ActivityCheckIn" representedClassName="ActivityCheckIn" syncable="YES">
+        <attribute name="checkedInAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" defaultValueString="Unnamed Activity" syncable="YES"/>
+    </entity>
+    <entity name="ActivityCheckOut" representedClassName="ActivityCheckOut" syncable="YES">
+        <attribute name="checkOutAt" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ActivityCheckIn" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="ActivityCheckOut" positionX="160" positionY="192" width="128" height="60"/>
+    </elements>
+</model>
