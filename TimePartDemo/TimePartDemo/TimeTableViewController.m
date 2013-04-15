@@ -81,6 +81,7 @@
         cell.detailTextLabel.text = [dateFormatter stringFromDate:activity.checkedInAt];
     } else if ([event isKindOfClass:[ActivityCheckOut class]]) {
         ActivityCheckOut *activity = event;
+        cell.textLabel.text = @"Unnamed Activity";
         cell.detailTextLabel.text = [dateFormatter stringFromDate:activity.checkOutAt];
     }
     return cell;
