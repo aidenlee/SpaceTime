@@ -168,19 +168,28 @@
 */
 
 #pragma mark - Table view delegate
-
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"toMap"]) {
+        LocationAppDelegate* appDelegate = [LocationAppDelegate sharedAppDelegate];
+        managedObjectContext = appDelegate.managedObjectContext;
+        MapViewController* newcontroller = [segue destinationViewController];
+        newcontroller.longitude = [NSNumber numberWithInt:122.2];
+        newcontroller.latitude =  [NSNumber numberWithFloat:123.3];       
+    }
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //Value Selected by user
-//    NSString *selectedValue = [displayValues objectAtIndex:indexPath.row];
-
-    //Initialize new viewController
-    MapViewController* mapViewController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
-    //Pass selected value to a property declared in NewViewController
-    mapViewController.longitude = [NSNumber numberWithInt:122.2];
-    mapViewController.latitude =  [NSNumber numberWithFloat:123.3];
-    //Push new view to navigationController stack
-    [self.navigationController pushViewController:mapViewController animated:YES];
+//    //Value Selected by user
+////    NSString *selectedValue = [displayValues objectAtIndex:indexPath.row];
+//
+//    //Initialize new viewController
+//    MapViewController* mapViewController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
+//    //Pass selected value to a property declared in NewViewController
+//    mapViewController.longitude = [NSNumber numberWithInt:122.2];
+//    mapViewController.latitude =  [NSNumber numberWithFloat:123.3];
+//    //Push new view to navigationController stack
+//    [self.navigationController pushViewController:mapViewController animated:YES];
+    [self performSegueWithIdentifier:@"toMap" sender:indexPath];
 }
 
 // addEvent stuff

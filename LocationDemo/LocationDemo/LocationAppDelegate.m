@@ -83,9 +83,9 @@
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:locationViewController];
     
-    [self.window makeKeyAndVisible];
     [self.window addSubview:navigationController.view];
-    
+    [self.window makeKeyAndVisible];
+
 //    LocationTableViewController* locationTableViewController = [[LocationTableViewController alloc] initWithStyle:UITableViewStylePlain] ;
 //    
 //    NSManagedObjectContext* context = [self managedObjectContext] ;

@@ -31,6 +31,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.mapView.delegate = self;
+    CLLocationCoordinate2D coord;
+    coord.longitude = (CLLocationDegrees)[self.longitude doubleValue];
+    coord.latitude = (CLLocationDegrees)[self.latitude doubleValue];
+    
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coord, 800, 800);
+    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,12 +46,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {    CLLocationCoordinate2D coord;
-    coord.longitude = (CLLocationDegrees)[self.longitude doubleValue];
-    coord.latitude = (CLLocationDegrees)[self.latitude doubleValue];
-    
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coord, 800, 800);
-    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-}
 
 @end
