@@ -18,16 +18,16 @@
 {
     // Override point for customization after application launch.
     
-    RootViewController *rootViewController = [[RootViewController alloc] initWithStyle:UITableViewStylePlain];
+    SpaceTimeViewController *SpaceTimeViewController = [[SpaceTimeViewController alloc] initWithStyle:UITableViewStylePlain];
     NSManagedObjectContext *context = [self managedObjectContext];
     if (!context) {
         // Handle the error.
     }
     // Pass the managed object context to the view controller.
-    rootViewController.managedObjectContext = context;
+    SpaceTimeViewController.managedObjectContext = context;
     
     UINavigationController *aNavigationController = [[UINavigationController alloc]
-                                                     initWithRootViewController:rootViewController];
+                                                     initWithRootViewController:SpaceTimeViewController];
     self.navigationController = aNavigationController;
     
     // initialize data store

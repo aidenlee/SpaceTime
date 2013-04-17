@@ -125,14 +125,7 @@
         cell.textLabel.text = @"Currently stationary.";
     }
     else {
-        cell.textLabel.text = [dateFormatter stringFromDate:[event locationTime]] ;
-        
-        NSString* coordsString =[NSString stringWithFormat:@"%@, %@",
-                                 [numberFormatter stringFromNumber:[event latitude]],
-                                 [numberFormatter stringFromNumber:[event longitude]]
-                                ];
-        
-        cell.detailTextLabel.text = coordsString ;
+        cell.textLabel.text = @"Currently moving." ;
     }
     
     return cell;
@@ -249,11 +242,7 @@
             }
         }
         else {
-            if (movement > 5 && currentLocation != nil) {
-                [self addEventOfType:[NSNumber numberWithInt:0]];
-            }
-            
-            else {
+            if (movement < 5 && currentLocation != nil) {
                 [self addEventOfType:[NSNumber numberWithInt:1]];
             }
         }
