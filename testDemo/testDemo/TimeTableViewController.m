@@ -1,22 +1,19 @@
 //
 //  TimeTableViewController.m
-//  TimePartDemo
+//  testDemo
 //
-//  Created by Aiden Lee on 2013-04-14.
+//  Created by Aiden Lee on 2013-04-15.
 //  Copyright (c) 2013 A/M. All rights reserved.
 //
 
 #import "TimeTableViewController.h"
-#import "ActivityCheckIn.h"
-#import "ActivityCheckOut.h"
 #import "Activity.h"
+
 @interface TimeTableViewController ()
 
 @end
 
 @implementation TimeTableViewController
-@synthesize managedObjectContext;
-
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,7 +33,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,12 +42,6 @@
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -66,7 +56,7 @@
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setTimeStyle:NSDateFormatterMediumStyle] ;
     }
-        
+    
     static NSString *CellIdentifier = @"Activity";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -75,25 +65,15 @@
     }
     
     id event = [self.eventsArray objectAtIndex:indexPath.row];
+    Activity *activity = event;
     
-    NSIndexPath *durPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    NSArray *paths = [NSArray arrayWithObject:durPath];
-    
-    if ([event isKindOfClass:[ActivityCheckIn class]]) {
-        self.activity = [[Activity alloc] init];
-        ActivityCheckIn *activity = event;
-        self.activity.name = activity.name;
-        self.activity.checkedInAt = activity.checkedInAt;
-        cell.textLabel.text = self.activity.name;
-        cell.detailTextLabel.text = [dateFormatter stringFromDate:self.activity.checkedInAt];
-    } else if ([event isKindOfClass:[ActivityCheckOut class]]) {
-        ActivityCheckOut *activity = event;
-        self.activity.checkedOutAt = activity.checkOutAt;
-        cell.textLabel.text = @"hello";
-        
-//        [@"  " stringByAppendingString:[dateFormatter stringFromDate:self.activity.checkedOutAt]];
-//        cell.detailTextLabel.text = [[dateFormatter stringFromDate:self.activity.checkedInAt] stringByAppendingString:checkOutTime];
-
+    if (!activity.checkOutTime) {
+        cell.textLabel.text = activity.name;
+        cell.detailTextLabel.text = [dateFormatter stringFromDate:activity.checkInTime];
+    } else {
+        cell.textLabel.text = activity.name;
+        NSString *checkOutTimeSubtitle = [@"  " stringByAppendingString:[dateFormatter stringFromDate:activity.checkOutTime]];
+        cell.detailTextLabel.text = [[dateFormatter stringFromDate:activity.checkInTime] stringByAppendingString:checkOutTimeSubtitle];
     }
     return cell;
 }
@@ -107,7 +87,7 @@
 }
 */
 
-
+/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -119,7 +99,7 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-
+*/
 
 /*
 // Override to support rearranging the table view.

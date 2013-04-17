@@ -23,6 +23,7 @@
 		07A3BF8E171B137800F4F709 /* TimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A3BF8D171B137800F4F709 /* TimeTableViewController.m */; };
 		07A3BF94171B556B00F4F709 /* ActivityCheckIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A3BF93171B556B00F4F709 /* ActivityCheckIn.m */; };
 		07A3BF97171B590E00F4F709 /* ActivityCheckOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A3BF96171B590E00F4F709 /* ActivityCheckOut.m */; };
+		07A3BF9A171BAA9E00F4F709 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A3BF99171BAA9E00F4F709 /* Activity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		07A3BF93171B556B00F4F709 /* ActivityCheckIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCheckIn.m; sourceTree = "<group>"; };
 		07A3BF95171B590E00F4F709 /* ActivityCheckOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCheckOut.h; sourceTree = "<group>"; };
 		07A3BF96171B590E00F4F709 /* ActivityCheckOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCheckOut.m; sourceTree = "<group>"; };
+		07A3BF98171BAA9E00F4F709 /* Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Activity.h; sourceTree = "<group>"; };
+		07A3BF99171BAA9E00F4F709 /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Activity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				07A3BF84171A5DB200F4F709 /* RootViewController.m */,
 				07A3BF8C171B137800F4F709 /* TimeTableViewController.h */,
 				07A3BF8D171B137800F4F709 /* TimeTableViewController.m */,
+				07A3BF98171BAA9E00F4F709 /* Activity.h */,
+				07A3BF99171BAA9E00F4F709 /* Activity.m */,
 				07A3BF68171A5D4E00F4F709 /* Supporting Files */,
 			);
 			path = TimePartDemo;
@@ -203,6 +208,7 @@
 				07A3BF8E171B137800F4F709 /* TimeTableViewController.m in Sources */,
 				07A3BF94171B556B00F4F709 /* ActivityCheckIn.m in Sources */,
 				07A3BF97171B590E00F4F709 /* ActivityCheckOut.m in Sources */,
+				07A3BF9A171BAA9E00F4F709 /* Activity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +323,7 @@
 				07A3BF80171A5D4E00F4F709 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
