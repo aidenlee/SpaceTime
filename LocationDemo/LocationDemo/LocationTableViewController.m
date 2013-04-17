@@ -8,6 +8,7 @@
 
 #import "LocationTableViewController.h"
 #import "LocationAppDelegate.h"
+#import "MapViewController.h"
 
 @interface LocationTableViewController ()
 
@@ -17,7 +18,7 @@
 @synthesize eventsArray ;
 @synthesize managedObjectContext ;
 @synthesize locationManager ;
-
+@synthesize navigationController ;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -67,9 +68,6 @@
 //                                                            target:nil
 //                                                            action:nil];
 //    [[self navigationItem] setBackBarButtonItem:back];
-
-    [[self locationManager] startUpdatingLocation] ;
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,7 +125,6 @@
     else {
         cell.textLabel.text = @"Currently moving." ;
     }
-    
     return cell;
 }
 
@@ -174,13 +171,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    //Value Selected by user
+//    NSString *selectedValue = [displayValues objectAtIndex:indexPath.row];
+
+    //Initialize new viewController
+    MapViewController* mapViewController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
+    //Pass selected value to a property declared in NewViewController
+    mapViewController.longitude = [NSNumber numberWithInt:122.2];
+    mapViewController.latitude =  [NSNumber numberWithFloat:123.3];
+    //Push new view to navigationController stack
+    [self.navigationController pushViewController:mapViewController animated:YES];
 }
 
 // addEvent stuff

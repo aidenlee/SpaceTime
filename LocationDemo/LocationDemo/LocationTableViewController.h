@@ -10,13 +10,15 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreData/CoreData.h>
 #import "Event.h"
+#import <MapKit/MapKit.h>
 
 @interface LocationTableViewController : UITableViewController <CLLocationManagerDelegate> {
     
     NSMutableArray* eventsArray ;
     NSManagedObjectContext* managedObjectContext ;
-    
+    UINavigationController *navigationController ;
     CLLocationManager* locationManager ;
+
 }
 
 @property (nonatomic,retain) NSMutableArray* eventsArray ;

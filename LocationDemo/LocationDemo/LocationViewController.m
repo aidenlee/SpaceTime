@@ -27,6 +27,9 @@
         managedObjectContext = appDelegate.managedObjectContext;
         LocationTableViewController* newcontroller = [segue destinationViewController];
         newcontroller.managedObjectContext = managedObjectContext;
+        newcontroller.navigationController = appDelegate.navigationController ;
+        [[newcontroller locationManager] startUpdatingLocation] ;
+
     }
 }
 

@@ -71,6 +71,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="Y3N-QL-4mT">
+            <objects>
+                <viewController id="6TY-C4-dOj" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bwD-6q-HIP">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="byn-m0-qTN"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="byn-m0-qTN" firstAttribute="top" secondItem="bwD-6q-HIP" secondAttribute="top" type="default" id="bEU-b9-OKj"/>
+                            <constraint firstItem="byn-m0-qTN" firstAttribute="trailing" secondItem="bwD-6q-HIP" secondAttribute="trailing" type="default" id="cFl-vx-bOa"/>
+                            <constraint firstItem="byn-m0-qTN" firstAttribute="bottom" secondItem="bwD-6q-HIP" secondAttribute="bottom" type="default" id="f1n-Qa-e0B"/>
+                            <constraint firstItem="byn-m0-qTN" firstAttribute="leading" secondItem="bwD-6q-HIP" secondAttribute="leading" type="default" id="xPS-9R-HwG"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z3T-xG-9IX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="577" y="291"/>
+        </scene>
         <!--Location Table View Controller-->
         <scene sceneID="ewd-Uc-pjd">
             <objects>
@@ -95,6 +118,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edI-11-7Uk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="859" y="32"/>
+        </scene>
+        <!--Table View Controller - Root View Controller-->
+        <scene sceneID="eO5-OA-TgM">
+            <objects>
+                <tableViewController id="rb2-r4-1Du" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Z5H-E6-3k7">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="AEt-Pf-Npp">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="9UC-Or-t19"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xmS-Gq-Sgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

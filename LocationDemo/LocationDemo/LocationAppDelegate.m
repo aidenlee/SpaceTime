@@ -13,7 +13,7 @@
 @implementation LocationAppDelegate
 
 @synthesize managedObjectModel,managedObjectContext,persistentStoreCoordinator;
-//@synthesize navigationController;
+@synthesize navigationController;
 
 // core data stuff
 - (NSManagedObjectContext *) managedObjectContext {
@@ -71,7 +71,8 @@
 // application stuff
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    LocationTableViewController* locationTableViewController = [[LocationTableViewController alloc] initWithStyle:UITableViewStylePlain] ;
+    
+    LocationViewController* locationViewController = [[LocationViewController alloc] initWithNibName:nil bundle:nil] ;
     
     NSManagedObjectContext* context = [self managedObjectContext] ;
     
@@ -80,7 +81,24 @@
         [errorAlert show] ;
     }
     
-    [_window makeKeyAndVisible] ;
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:locationViewController];
+    
+    [self.window makeKeyAndVisible];
+    [self.window addSubview:navigationController.view];
+    
+//    LocationTableViewController* locationTableViewController = [[LocationTableViewController alloc] initWithStyle:UITableViewStylePlain] ;
+//    
+//    NSManagedObjectContext* context = [self managedObjectContext] ;
+//    
+//    if (!context) {
+//        UIAlertView* errorAlert = [[UIAlertView alloc] initWithTitle:@"No Context" message:@"You failed." delegate:nil cancelButtonTitle:@"Oops." otherButtonTitles: nil] ;
+//        [errorAlert show] ;
+//    }
+//    
+//    self.navigationController = [[UINavigationController alloc] initWithRootViewController:locationTableViewController];
+//
+//    [self.window makeKeyAndVisible];
+//    [self.window addSubview:navigationController.view];
     
     // Override point for customization after application launch.
     return YES;

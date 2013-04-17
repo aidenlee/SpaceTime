@@ -10,15 +10,14 @@
 
 @interface LocationAppDelegate : UIResponder <UIApplicationDelegate> {
     NSManagedObjectContext* managedObjectContext ;
-//    UINavigationController *navigationController;
-
+    UINavigationController *navigationController;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-//@property (nonatomic, retain) UINavigationController *navigationController;
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 - (NSString *)applicationDocumentsDirectory;
 - (void)navigationBar;
